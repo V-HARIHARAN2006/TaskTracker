@@ -1,3 +1,4 @@
+atlas-credentials.env
 node_modules/
 .env
 client/node_modules/
