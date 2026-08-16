@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import api from "../services/api";
+import "./Login.css";
 
 function Login() {
-    
-
     const [formData, setFormData] = useState({
         email: "",
         password: ""
@@ -72,60 +71,159 @@ function Login() {
     };
 
     return (
-        <div className="auth-container">
+        <div className="login-page">
 
-            <div className="auth-card">
+            {/* Background decorations */}
+            <div className="login-decoration decoration-one"></div>
+            <div className="login-decoration decoration-two"></div>
 
-                <h1>Task Tracker</h1>
+            <div className="login-container">
 
-                <h2>Welcome Back</h2>
+                {/* Left branding section */}
+                <div className="login-brand">
 
-                <p className="subtitle">
-                    Login to manage your tasks
-                </p>
-
-                {error && (
-                    <div className="error">
-                        {error}
+                    <div className="brand-logo">
+                        ✓
                     </div>
-                )}
 
-                <form onSubmit={handleSubmit}>
+                    <h1>Task Tracker</h1>
 
-                    <input
-                        type="email"
-                        name="email"
-                        placeholder="Email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                    />
+                    <p>
+                        Organize your work.
+                        <br />
+                        Achieve your goals.
+                    </p>
 
-                    <input
-                        type="password"
-                        name="password"
-                        placeholder="Password"
-                        value={formData.password}
-                        onChange={handleChange}
-                        required
-                    />
+                    <div className="brand-features">
+                        <div>
+                            <span>✓</span>
+                            Manage your tasks
+                        </div>
 
-                    <button
-                        type="submit"
-                        disabled={loading}
-                    >
-                        {loading ? "Logging in..." : "Login"}
-                    </button>
+                        <div>
+                            <span>✓</span>
+                            Stay productive
+                        </div>
 
-                </form>
+                        <div>
+                            <span>✓</span>
+                            Track your progress
+                        </div>
+                    </div>
 
-                <p>
-                    Don't have an account?{" "}
-                    <Link to="/register">
-                        Register
-                    </Link>
-                </p>
+                </div>
 
+                {/* Login card */}
+                <div className="login-card">
+
+                    <div className="login-header">
+                        <h2>Welcome Back 👋</h2>
+
+                        <p>
+                            Sign in to continue to your dashboard
+                        </p>
+                    </div>
+
+                    {error && (
+                        <div className="login-error">
+                            <span>⚠</span>
+                            {error}
+                        </div>
+                    )}
+
+                    <form onSubmit={handleSubmit}>
+
+                        {/* Email */}
+                        <div className="input-group">
+
+                            <label htmlFor="email">
+                                Email Address
+                            </label>
+
+                            <div className="input-wrapper">
+
+                                <span className="input-icon">
+                                    ✉
+                                </span>
+
+                                <input
+                                    id="email"
+                                    type="email"
+                                    name="email"
+                                    placeholder="Enter your email"
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                    required
+                                />
+
+                            </div>
+
+                        </div>
+
+                        {/* Password */}
+                        <div className="input-group">
+
+                            <label htmlFor="password">
+                                Password
+                            </label>
+
+                            <div className="input-wrapper">
+
+                                <span className="input-icon">
+                                    🔒
+                                </span>
+
+                                <input
+                                    id="password"
+                                    type="password"
+                                    name="password"
+                                    placeholder="Enter your password"
+                                    value={formData.password}
+                                    onChange={handleChange}
+                                    required
+                                />
+
+                            </div>
+
+                        </div>
+
+                        <button
+                            className="login-button"
+                            type="submit"
+                            disabled={loading}
+                        >
+                            {loading ? (
+                                <>
+                                    <span className="spinner"></span>
+                                    Logging in...
+                                </>
+                            ) : (
+                                <>
+                                    Login
+                                    <span className="arrow">→</span>
+                                </>
+                            )}
+                        </button>
+
+                    </form>
+
+                    <div className="login-divider">
+                        <span>OR</span>
+                    </div>
+
+                    <p className="register-text">
+                        Don't have an account?
+                        <Link to="/register">
+                            Create an account
+                        </Link>
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div className="login-footer">
+                © 2026 Task Tracker • Stay organized, stay productive.
             </div>
 
         </div>
